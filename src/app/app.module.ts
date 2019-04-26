@@ -13,6 +13,9 @@ import { FirstFormComponent } from './first-form/first-form.component';
 import { SecondPageComponent } from './second-page/second-page.component';
 import { ThirdPageComponent } from './third-page/third-page.component';
 import { FourthPageComponent } from './fourth-page/fourth-page.component';
+import { FifthPageComponent } from './fifth-page/fifth-page.component';
+import { SixthPageComponent } from './sixth-page/sixth-page.component';
+import { SaventhPageComponent } from './saventh-page/saventh-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { FourthPageComponent } from './fourth-page/fourth-page.component';
     FirstFormComponent,
     SecondPageComponent,
     ThirdPageComponent,
-    FourthPageComponent
+    FourthPageComponent,
+    FifthPageComponent,
+    SixthPageComponent,
+    SaventhPageComponent
   ],
   imports: [
     BrowserModule,
