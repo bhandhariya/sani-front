@@ -2,11 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 
-
-
-
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstFormComponent } from './first-form/first-form.component';
@@ -16,7 +11,6 @@ import { FourthPageComponent } from './fourth-page/fourth-page.component';
 import { FifthPageComponent } from './fifth-page/fifth-page.component';
 import { SixthPageComponent } from './sixth-page/sixth-page.component';
 import { SaventhPageComponent } from './saventh-page/saventh-page.component';
-import { DemoComponent } from './demo/demo.component';
     
 @NgModule({
   declarations: [
@@ -27,8 +21,7 @@ import { DemoComponent } from './demo/demo.component';
     FourthPageComponent,
     FifthPageComponent,
     SixthPageComponent,
-    SaventhPageComponent,
-    DemoComponent
+    SaventhPageComponent
   ],
   imports: [
     BrowserModule,
