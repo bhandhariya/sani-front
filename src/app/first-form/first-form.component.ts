@@ -12,7 +12,6 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 export class FirstFormComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
   firstForm: any;
-  //  obj={}
   public loading = false;
   validationMessages  = {
           'FirstName' : {
@@ -76,20 +75,6 @@ export class FirstFormComponent implements OnInit {
         this.router.navigate(['second']);
       }
     }
-    // download(){
-    //   var storage=firebase.storage().ref();
-    //   var pdf=storage.child('ghf.pdf');
-    //   var data=pdf.getDownloadURL();
-    //   data.then(e=>{
-    //     console.log(e)
-    //   })
-    // }
-    // upload(){
-    
-    // }
-    // next(){
-    //   this.route.navigate(['second']);
-    // }
   
     logValidationMessages(group: FormGroup = this.firstForm): void {
       Object.keys(group.controls).forEach((key: string) => {

@@ -11,34 +11,65 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 export class SecondPageComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
   persionalDataForm: any;
-  public loading = false;
   validationMessages  = {
           'ParmentAddress' : {
-                          'required': 'Parment Address is Required',
-                          'minlength': '5 Characters is Required'
-                        },
+                                'required': 'Parment Address is Required',
+                                'minlength': '5 Characters is Required'
+                              },
           'Mobile' : {
-                          'required': 'Mobile No. is Required',
-                          'minlength': '10 Digits is Required'
+                        'required': 'Mobile No. is Required',
+                        'minlength': '10 Digits is Required'
+                      },
+          'OfficeFax' : {
+                          'required': 'Office Fax is Required'
+                          },
+          'Residence' : {
+                            'required': 'Residence is Required'
+                          },
+          'Landline' : {
+                          'required': 'Landline is Required'
                         },
-          'LastName' : {
-                            'required': 'Last Name is Required',
-                            'minlength': '3 Characters is Required'
+          'CorrespondenceAddress' : {
+                                      'required': 'Correspondence Address is Required'
+                                    },
+          'Email' : {
+                      'required': 'Correspondence Address is Required',
+                      'email': 'Invalid email'
+                    },
+          'DateOfBirth' : {
+                            'required': 'DateOfBirth is Required'
                           },
-          'AddmissionDate' : {
-                            'required': 'Addmission Date is Required'
-                          },
-          'File' : {
-                    'required': 'File is Required'
-                  }
+          'Age' : {
+                    'required': 'DateOfBirth is Required'
+                  },
+          'Gender' : {
+                        'required': 'Gender is Required'
+                      },
+          'Education' : {
+                        'required': 'Education is Required'
+                      },
+          'Occupation' : {
+                        'required': 'Occupation is Required'
+                      },
+          'MaterialStatus' : {
+                                'required': 'Material Status is Required'
+                              },
   };
   
   formErrors = {
     'ParmentAddress' : '',
     'Mobile' : '',
-    'LastName' : '',
-    'AddmissionDate' : '',
-    'File' : ''
+    'OfficeFax' : '',
+    'Residence' : '',
+    'Landline' : '',
+    'CorrespondenceAddress' : '',
+    'Email' : '',
+    'DateOfBirth' : '',
+    'Age' : '',
+    'Gender' : '',
+    'Education' : '',
+    'Occupation' : '',
+    'MaterialStatus' : '',
   };
   submmited: boolean = false;
   constructor(private router:Router,private fb: FormBuilder) {
@@ -54,14 +85,31 @@ export class SecondPageComponent implements OnInit {
     this.persionalDataForm = this.fb.group({
       ParmentAddress : ['',[Validators.required,Validators.minLength(5)]],
       Mobile : ['',[Validators.required,Validators.minLength(10)]],
-      // LastName : ['',[Validators.required]],
-      // AddmissionDate : ['',[Validators.required]],
-      // File : ['',[Validators.required]]
+      OfficeFax : ['',[Validators.required]],
+      Residence : ['',[Validators.required]],
+      Landline : ['',[Validators.required]],
+      CorrespondenceAddress : ['',[Validators.required]],
+      Email : ['',[Validators.required,Validators.email]],
+      DateOfBirth : ['',[Validators.required]],
+      Age : ['',[Validators.required]],
+      Gender : ['',[Validators.required]],
+      Education : ['',[Validators.required]],
+      Occupation : ['',[Validators.required]],
+      MaterialStatus : ['',[Validators.required]],
     });
 
     this.persionalDataForm.valueChanges.subscribe(value =>{
       this.logValidationMessages();
     });
+  }
+
+  onSubmit(formData){
+    this.submmited = true;
+    this.logValidationMessages();
+    if(this.persionalDataForm.valid){
+      console.log(formData);
+      this.router.navigate(['third']);
+    }
   }
 
   logValidationMessages(group: FormGroup = this.persionalDataForm): void {
