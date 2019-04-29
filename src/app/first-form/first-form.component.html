@@ -1,7 +1,7 @@
 <div class="container register">
   <div class="row">
       <div class="col-md-3 register-left">
-          <img src="../../assets/logo_white.png" alt=""/>
+          <img src="" alt=""/>
           <h3>Welcome</h3> 
       </div>
       <div class="col-md-9 register-right">
@@ -20,7 +20,7 @@
                       <div *ngIf="formErrors.LastName" class="invalid-feedback">{{formErrors.LastName}}</div>
                   </div>
                   <div class="form-group">
-                      <input type="file" class="form-control" placeholder="Upload File *" value="" />
+                      <input type="file" class="form-control" (change)="uploadImage($event)"  placeholder="Upload File *" value="" />
                   </div>
               </div>
               <div class="col-md-6">

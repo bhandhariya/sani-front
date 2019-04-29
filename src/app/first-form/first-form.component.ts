@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from "firebase";
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { AngularFireStorage } from "angularfire2/storage";
+import {  ngf } from "angular-file"
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-first-form',
@@ -12,6 +16,26 @@ export class FirstFormComponent implements OnInit {
   firstForm: any;
   //  obj={}
   public loading = false;
+  downloadURL: Observable<string>;
+  
+  constructor(private route:Router,private fb: FormBuilder,private storage:AngularFireStorage) { }
+  uploadImage(event){
+    const file = event.target.files[0];
+    var randomString=Math.floor(Date.now() / 1000);
+    const filePath = 'sunny'+randomString;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+    task.snapshotChanges().pipe(
+      finalize(() =>{ this.downloadURL = fileRef.getDownloadURL()
+      this.downloadURL.subscribe(e=>{
+        console.log(e)
+      })
+      } )
+   )
+  .subscribe(e=>{
+    
+  })
+  }
   validationMessages  = {
           'Employer' : {
                           'required': 'Employer is Required'
@@ -118,7 +142,7 @@ export class FirstFormComponent implements OnInit {
                 'ClientAddress' : '',
     };
     submmited: boolean = false ;
-    constructor(private route:Router,private fb: FormBuilder) { }
+    
   
     ngOnInit() {
       this.firstForm = this.fb.group({
