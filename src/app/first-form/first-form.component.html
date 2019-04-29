@@ -1,58 +1,42 @@
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-   
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-
-<div class="contact-section">
-
-  <h1>Application Form</h1>
-  <div class="border"></div>
-    <div class="container" >
-        <div class="row"   >
-            <div class="col-md-4" >
-              
-             <input type="date"  [(ngModel)]="obj.addmission_date"  class="contact-form-text" placeholder="Addmission Date">     
-            </div>
-            <div class="col-md-8">
-             <input type="file" class="contact-form-text" >     
-            </div>
+<div class="container register">
+  <div class="row">
+      <div class="col-md-3 register-left">
+          <img src="../../assets/logo_white.png" alt=""/>
+          <h3>Welcome</h3> 
+      </div>
+      <div class="col-md-9 register-right">
+        <form [formGroup]="firstForm" (ngSubmit)="onSubmit(firstForm.value)">
+          <h3 class="register-heading">First Application Form</h3>
+          <div class="row register-form">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <input type="text" formControlName="FirstName" class="form-control" (blur)="logValidationMessages(firstForm)"
+                        [class.is-invalid]="formErrors.FirstName" placeholder="First Name *">
+                      <div *ngIf="formErrors.FirstName" class="invalid-feedback">{{formErrors.FirstName}}</div>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" formControlName="LastName" class="form-control" (blur)="logValidationMessages(firstForm)"
+                        [class.is-invalid]="formErrors.LastName" placeholder="Last Name *">
+                      <div *ngIf="formErrors.LastName" class="invalid-feedback">{{formErrors.LastName}}</div>
+                  </div>
+                  <div class="form-group">
+                      <input type="file" class="form-control" placeholder="Upload File *" value="" />
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <input type="text" formControlName="MiddleName" class="form-control" (blur)="logValidationMessages(firstForm)"
+                        [class.is-invalid]="formErrors.MiddleName" placeholder="Middle Name *">
+                      <div *ngIf="formErrors.MiddleName" class="invalid-feedback">{{formErrors.MiddleName}}</div>
+                  </div>
+                  <div class="form-group">
+                      <input type="date" class="form-control" placeholder="Addmission Date *" value="" />
+                  </div>
+                  <input type="submit" class="btnRegister" value="Next" [disabled]="firstForm.invalid"/>
+              </div>
           </div>
-       <div class="row">
-       <div class="col-md-4" >
-        <input type="text" class="contact-form-text" [(ngModel)]="obj.first_name" placeholder="First Name">     
-       </div>
-       <div class="col-md-4">
-        <input type="text" class="contact-form-text" [(ngModel)]="obj.middle_name" placeholder="Middle Name">     
-       </div>
-       <div class="col-md-4">
-        <input type="email" class="contact-form-text" [(ngModel)]="obj.last_name" placeholder="Last Name">     
-       </div>
-     </div>
+        </form>
+      </div>
+  </div>
 
-        <div class="row">
-            <div class="col-md-4" >
-                    
-            </div>
-            <div class="col-md-4" >
-                <input (click)="next()"  type="button" class="contact-form-text" value="Next">     
-            </div>
-            <div class="col-md-4" >
-                    
-            </div>
-        </div>
-
-
-       
-
-    </div>
 </div>
-
-
-  </body>
-</html>

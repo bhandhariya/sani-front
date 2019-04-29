@@ -27,8 +27,6 @@ import { SaventhPageComponent } from './saventh-page/saventh-page.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,ReactiveFormsModule
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]
