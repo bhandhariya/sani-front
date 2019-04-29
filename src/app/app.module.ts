@@ -16,6 +16,7 @@ import { FourthPageComponent } from './fourth-page/fourth-page.component';
 import { FifthPageComponent } from './fifth-page/fifth-page.component';
 import { SixthPageComponent } from './sixth-page/sixth-page.component';
 import { SaventhPageComponent } from './saventh-page/saventh-page.component';
+import { DemoComponent } from './demo/demo.component';
     
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SaventhPageComponent } from './saventh-page/saventh-page.component';
     FourthPageComponent,
     FifthPageComponent,
     SixthPageComponent,
-    SaventhPageComponent
+    SaventhPageComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
