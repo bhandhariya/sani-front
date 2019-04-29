@@ -15,12 +15,6 @@ export class FirstFormComponent implements OnInit {
   //  obj={}
   public loading = false;
   validationMessages  = {
-          'Employer' : {
-                          'required': 'Employer is Required'
-                        },
-          'EmployeeType' : {
-                            'required': 'Employee Type is Required'
-                          },
           'FirstName' : {
                           'required': 'First Name is Required',
                           'minlength': '5 Characters is Required'
@@ -38,85 +32,15 @@ export class FirstFormComponent implements OnInit {
                           },
           'File' : {
                     'required': 'File is Required'
-                  },
-          'PhoneNumber' :  {
-                            'required': 'Phone is Required',
-                            'minlength': 'Minimum 10 Digits are Required',
-                            'maxlength': 'Maximum 10 Digits are Required'
-                          },
-          'EmailID' : {
-                        'required': 'Email is required',
-                        'pattern' : 'Please Enter Valid Email'
-                      },
-          'Address' : {
-                        'minlength': '5 Characters are Required'
-                      },
-          'ResidentialState' : {
-                                  'required': 'Residential State is Required'
-                                },
-          'ZipCode' : {
-                        'minlength': 'Minimum 6 Digits are Required',
-                        'maxlength': 'Maximum 6 Digits are Required'
-                      },
-          'WorkState': {
-                          'required': 'Work State is Required'
-                        },
-          'TimesheetType': {
-                      'required': 'Email is Required.'
-                  },
-          'LineItemType': {
-                            'required': 'LineItem Type is Required.'
-                          },
-          'Class': {
-                            'required': 'Class field is Required.'
-                          },
-          'Vendor': {
-                            'required': 'Vendor is Required.'
-                          },
-          'ProjectStartDate': {
-                                'required': 'Project Start Date is Required'
-                          },
-          'ProjectEndDate' : {
-                                'required': 'Project End Date is Required'
-                              },
-          'LastInvoiceDate' : {
-                                'required': 'Last Invoice Date is Required'
-                              },
-          'EmployeeRole' : {
-                                'required': 'Employee Role is Required'
-                              },
-          'ClientName' : {
-                            'required': 'Client Name is Required'
-                          },
-          'ClientAddress' : {
-                                'required': 'Client Address is Required'
-                              }
+                  }
   };
   
   formErrors = {
-                'Employer' : '',
-                'EmployeeType' : '',
                 'FirstName' : '',
                 'MiddleName' : '',
                 'LastName' : '',
                 'AddmissionDate' : '',
-                'File' : '',
-                'PhoneNumber' : '',
-                'EmailID' : '',
-                'Address' : '',
-                'ResidentialState' : '',
-                'ZipCode' : '',
-                'WorkState': '',
-                'TimesheetType': '',
-                'LineItemType': '',
-                'Class': '',
-                'Vendor': '',
-                'ProjectStartDate': '',
-                'ProjectEndDate' : '',
-                'LastInvoiceDate' : '',
-                'EmployeeRole' : '',
-                'ClientName' : '',
-                'ClientAddress' : '',
+                'File' : ''
     };
   submmited: boolean = false;
 
