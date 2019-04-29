@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from "firebase";
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-first-form',
@@ -9,6 +10,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./first-form.component.css']
 })
 export class FirstFormComponent implements OnInit {
+  datePickerConfig: Partial<BsDatepickerConfig>;
   firstForm: any;
   //  obj={}
   public loading = false;
@@ -31,12 +33,11 @@ export class FirstFormComponent implements OnInit {
                             'required': 'Last Name is Required',
                             'minlength': '3 Characters is Required'
                           },
-          'DateOfBirth' : {
-                            'required': 'Date Of Birth is Required'
+          'AddmissionDate' : {
+                            'required': 'Addmission Date is Required'
                           },
-          'SSN' : {
-                    'required': 'SSN Number is Required',
-                    'minlength': '4 Digits are Required',
+          'File' : {
+                    'required': 'File is Required'
                   },
           'PhoneNumber' :  {
                             'required': 'Phone is Required',
@@ -98,8 +99,8 @@ export class FirstFormComponent implements OnInit {
                 'FirstName' : '',
                 'MiddleName' : '',
                 'LastName' : '',
-                'DateOfBirth' : '',
-                'SSN' : '',
+                'AddmissionDate' : '',
+                'File' : '',
                 'PhoneNumber' : '',
                 'EmailID' : '',
                 'Address' : '',
@@ -117,21 +118,38 @@ export class FirstFormComponent implements OnInit {
                 'ClientName' : '',
                 'ClientAddress' : '',
     };
-    submmited: boolean = false ;
-    constructor(private route:Router,private fb: FormBuilder) { }
+  submmited: boolean = false;
+
+  constructor(private route:Router,private fb: FormBuilder) {
+    this.datePickerConfig = Object.assign({},
+      {
+        containerClass: 'theme-dark-blue',
+        showWeekNumbers: false,
+        dateInputFormat: 'MM/DD/YYYY'
+      });
+    }
   
     ngOnInit() {
       this.firstForm = this.fb.group({
         FirstName : ['',[Validators.required]],
         MiddleName : ['',[Validators.required]],
         LastName : ['',[Validators.required]],
-        // AddimissionDate : ['',[Validators.required]],
+        AddmissionDate : ['',[Validators.required]],
+        File : ['',[Validators.required]]
+      });
+
+      this.firstForm.valueChanges.subscribe(value =>{
+        this.logValidationMessages();
       });
     }
   
   
-    onSubmit(){
-      alert()
+    onSubmit(formData){
+      this.submmited = true;
+      this.logValidationMessages();
+      if(this.firstForm.valid){
+        console.log(formData);
+      }
     }
     // download(){
     //   var storage=firebase.storage().ref();
@@ -148,11 +166,11 @@ export class FirstFormComponent implements OnInit {
     //   this.route.navigate(['second']);
     // }
   
-    logValidationMessages(group: FormGroup ): void {
+    logValidationMessages(group: FormGroup = this.firstForm): void {
       Object.keys(group.controls).forEach((key: string) => {
         const abstractControl = group.get(key);
           this.formErrors[key] = '';
-            if (abstractControl && abstractControl.invalid && (abstractControl.touched)) {
+            if (abstractControl && !abstractControl.valid && (abstractControl.touched || this.submmited)) {
               const messages = this.validationMessages[key];
               for (const errorKey in abstractControl.errors) {
                 if (errorKey) {

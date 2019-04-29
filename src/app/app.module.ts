@@ -1,7 +1,11 @@
+    // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ngfModule, ngf } from "angular-file"
 
+    // Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstFormComponent } from './first-form/first-form.component';
@@ -26,7 +30,9 @@ import { SaventhPageComponent } from './saventh-page/saventh-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
+    ngfModule
   ],
   providers: [],
   bootstrap: [AppComponent]
