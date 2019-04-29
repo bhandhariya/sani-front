@@ -43,12 +43,12 @@
               </div>
               <div class="col-md-4">
                   <div class="form-group">
-                      <input type="text" formControlName="Mobile" class="form-control" (blur)="logValidationMessages()" 
+                      <input type="text" formControlName="Mobile" class="form-control" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="10" MaxDigit="10"
                         [class.is-invalid]="formErrors.Mobile" placeholder="Mobile No. *">
                       <div *ngIf="formErrors.Mobile" class="invalid-feedback">{{formErrors.Mobile}}</div>
                   </div>
                   <div class="form-group">
-                    <input type="text" formControlName="Landline" (blur)="logValidationMessages()"
+                    <input type="text" formControlName="Landline" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="10" MaxDigit="10"
                       class="form-control" placeholder="Landline *" [class.is-invalid]="formErrors.Landline" >
                       <div *ngIf="formErrors.Landline" class="invalid-feedback">{{formErrors.Landline}}</div>
                   </div> 
@@ -74,7 +74,7 @@
                     <div *ngIf="formErrors.CorrespondenceAddress" class="invalid-feedback">{{formErrors.CorrespondenceAddress}}</div>
                 </div>
                 <div class="form-group">
-                    <input type="text" formControlName="Age" class="form-control" (blur)="logValidationMessages()" 
+                    <input type="text" formControlName="Age" class="form-control" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="1" MaxDigit="3" 
                       [class.is-invalid]="formErrors.Age" placeholder="Age *">
                     <div *ngIf="formErrors.Age" class="invalid-feedback">{{formErrors.Age}}</div>
                 </div>

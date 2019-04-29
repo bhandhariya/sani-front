@@ -32,7 +32,7 @@
               </div>
               <div class="col-md-4">
                   <div class="form-group">
-                      <input type="text" formControlName="SpouseAge" class="form-control" (blur)="logValidationMessages()" 
+                      <input type="text" formControlName="SpouseAge" class="form-control" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="1" MaxDigit="2"
                         [class.is-invalid]="formErrors.SpouseAge" placeholder="Spouse Age *">
                       <div *ngIf="formErrors.SpouseAge" class="invalid-feedback">{{formErrors.SpouseAge}}</div>
                   </div>
@@ -45,7 +45,7 @@
                       <div *ngIf="formErrors.LivingStatus" class="invalid-feedback">{{formErrors.LivingStatus}}</div>
                   </div>
                   <div class="form-group">
-                      <input type="text" formControlName="ContactNo" class="form-control" (blur)="logValidationMessages()" 
+                      <input type="text" formControlName="ContactNo" class="form-control" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="10" MaxDigit="10"
                         [class.is-invalid]="formErrors.ContactNo" placeholder="Contact No. *">
                       <div *ngIf="formErrors.ContactNo" class="invalid-feedback">{{formErrors.ContactNo}}</div>
                   </div>
@@ -57,7 +57,7 @@
                     <div *ngIf="formErrors.SpouseOccupation" class="invalid-feedback">{{formErrors.SpouseOccupation}}</div>
                 </div>
                 <div class="form-group">
-                    <input type="text" formControlName="NoOfChildren" class="form-control" (blur)="logValidationMessages()" 
+                    <input type="text" formControlName="NoOfChildren" class="form-control" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="1" MaxDigit="2"
                       [class.is-invalid]="formErrors.NoOfChildren" placeholder="No. Of Children *">
                     <div *ngIf="formErrors.NoOfChildren" class="invalid-feedback">{{formErrors.NoOfChildren}}</div>
                 </div>

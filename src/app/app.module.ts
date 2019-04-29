@@ -15,6 +15,9 @@ import { FourthPageComponent } from './fourth-page/fourth-page.component';
 import { FifthPageComponent } from './fifth-page/fifth-page.component';
 import { SixthPageComponent } from './sixth-page/sixth-page.component';
 import { SaventhPageComponent } from './saventh-page/saventh-page.component';
+
+    // Directives
+import { OnlyNumberWithLengthDirective } from './shared/directives/onlynumberswithlength';
     
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { SaventhPageComponent } from './saventh-page/saventh-page.component';
     FourthPageComponent,
     FifthPageComponent,
     SixthPageComponent,
-    SaventhPageComponent
+    SaventhPageComponent,
+    OnlyNumberWithLengthDirective
   ],
   imports: [
     BrowserModule,

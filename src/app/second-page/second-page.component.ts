@@ -84,7 +84,7 @@ export class SecondPageComponent implements OnInit {
    ngOnInit() {
     this.persionalDataForm = this.fb.group({
       ParmentAddress : ['',[Validators.required,Validators.minLength(5)]],
-      Mobile : ['',[Validators.required,Validators.minLength(10)]],
+      Mobile : ['',[Validators.required]],
       OfficeFax : ['',[Validators.required]],
       Residence : ['',[Validators.required]],
       Landline : ['',[Validators.required]],
