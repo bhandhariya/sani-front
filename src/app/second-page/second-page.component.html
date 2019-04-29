@@ -1,116 +1,50 @@
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-   
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-
-<div class="contact-section">
-
-  <h1>Personal Data</h1>
-  <div class="border"></div>
-    <div class="container"  >
-      <div class="row">
-        <div class="col-md-12" >
-         <textarea type="text" class="contact-form-text" [(ngModel)]="obj.permanent_address"  placeholder="Perment Address"></textarea>     
-        </div>
-      </div>
-          <div class="row">
-          <div class="col-md-3" >
-              <input type="text" class="contact-form-text" [(ngModel)]="obj.permanent_mobile"  placeholder="Mobile">     
-          </div>
-          <div class="col-md-3" >
-              <input type="text" class="contact-form-text" [(ngModel)]="obj.permanent_fax"  placeholder="Office Fax">     
-          </div>
-          <div class="col-md-3" >
-              <input type="text" class="contact-form-text" [(ngModel)]="obj.permanent_residance_number"  placeholder="Residence">     
-          </div>
-          <div class="col-md-3" >
-              <input type="text" class="contact-form-text" [(ngModel)]="obj.permanent_landline" placeholder="Landline">     
-          </div>
-        </div>
-          <div class="row">
-            <div class="col-md-12" >
-             <textarea type="text" class="contact-form-text" [(ngModel)]="obj.correspondence_address" placeholder="Correspondence Address"></textarea>     
-            </div>
-          </div>
-          <div class="row">
-              <div class="col-md-3" >
-                  <input type="text" class="contact-form-text"  [(ngModel)]="obj.correspondence_mobile"  [(ngModel)]="permanent_mobile" placeholder="Mobile">     
+<div class="container register">
+  <div class="row">
+      <!-- <div class="col-md-3 register-left">
+          <img src="../../assets/logo_white.png" alt=""/>
+          <h3>Welcome</h3> 
+      </div> -->
+      <div class="col-md-12 register-right">
+        <form [formGroup]="persionalDataForm" (ngSubmit)="onSubmit(persionalDataForm.value)">
+          <h3 class="register-heading">Persional Data</h3>
+          <div class="row register-form">
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <input type="text" formControlName="ParmentAddress" class="form-control" (blur)="logValidationMessages()"
+                        [class.is-invalid]="formErrors.ParmentAddress" placeholder="Parment Address *">
+                      <div *ngIf="formErrors.ParmentAddress" class="invalid-feedback">{{formErrors.ParmentAddress}}</div>
+                  </div>
+                  <!-- <div class="form-group">
+                      <input type="text" formControlName="LastName" class="form-control" (blur)="logValidationMessages()"
+                        [class.is-invalid]="formErrors.LastName" placeholder="Last Name *">
+                      <div *ngIf="formErrors.LastName" class="invalid-feedback">{{formErrors.LastName}}</div>
+                  </div>
+                  <div class="form-group">
+                      <input type="file" ngf formControlName="File" class="form-control" placeholder="Upload File *" [class.is-invalid]="formErrors.File" />
+                      <div *ngIf="formErrors.File" class="invalid-feedback">{{formErrors.File}}</div>
+                  </div> -->
               </div>
-              <div class="col-md-3" >
-                  <input type="text" class="contact-form-text"  [(ngModel)]="obj.correspondence_fax" placeholder="Office Fax">     
-              </div>
-              <div class="col-md-3" >
-                  <input type="text" class="contact-form-text" [(ngModel)]="obj.correspondence_residance_number"  placeholder="Residence">     
-              </div>
-              <div class="col-md-3" >
-                  <input type="text" class="contact-form-text"  [(ngModel)]="obj.correspondence_landline" placeholder="Landline">     
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-md-12" >
-                  <input type="email" class="contact-form-text" [(ngModel)]="obj.email"  placeholder="E-mail Id">     
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-md-3" >
-                  <input type="text"  class="contact-form-text" [(ngModel)]="obj.DOB" placeholder="Date Of Birth">    
-              </div>
-              <div class="col-md-4" >
-                  <input type="date" class="contact-form-text" [(ngModel)]="obj.DOB" placeholder="Date Of Birth">    
-              </div>
-              <div class="col-md-2" >
-                  <input type="text" class="contact-form-text" [(ngModel)]="obj.age" placeholder="Age ">     
-              </div>
-              <div class="col-md-3" >
-                 
-                    <select id="my-input" class="contact-form-text" [(ngModel)]="obj.sex"  >
-                      <option>Select Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                    </select>
-                    
-              </div>
-            
-          </div> 
-          
-          <div class="row">
-            <div class="col-md-4" >
-                <input type="text" class="contact-form-text" [(ngModel)]="obj.education" placeholder="Educational Qualification">     
-            </div>
-            <div class="col-md-4" >
-                <input type="text" class="contact-form-text" [(ngModel)]="obj.occupation" placeholder="Occupation">     
-            </div>
-            <div class="col-md-4" >
-                <input type="text" class="contact-form-text" [(ngModel)]="obj.marrital_status" placeholder="Marrital Status">     
-            </div>
-        </div>
-
-
-          <div class="row">
-              <div class="col-md-4" >
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <input type="text" formControlName="Mobile" class="form-control" (blur)="logValidationMessages()" 
+                        [class.is-invalid]="formErrors.Mobile" placeholder="Mobile No. *">
+                      <div *ngIf="formErrors.Mobile" class="invalid-feedback">{{formErrors.Mobile}}</div>
+                  </div>
+                  <!-- <div class="form-group">
+                    <input type="text" formControlName="AddmissionDate" bsDatepicker [bsConfig]="datePickerConfig" (blur)="logValidationMessages()"
+                      class="form-control" maxlength="8" placeholder="Enter Addmission Date" [class.is-invalid]="formErrors.AddmissionDate" >
+                      <div *ngIf="formErrors.AddmissionDate" class="invalid-feedback">{{formErrors.AddmissionDate}}</div>
+                  </div>  -->
                   
-                </div>
-            <div class="col-md-4" >
-              <input type="button" class="contact-form-text" value="next" (click)="next()"  >
-            </div>
-            <div class="col-md-4" >
-                
               </div>
+              <div class="col-md-4">
 
-          </div>     
+              </div>
+              <input type="submit" class="btnRegister" value="Next" />
+          </div>
+        </form>
+        <pre>{{persionalDataForm.value |json}}</pre>
+      </div>
+  </div>
 
-
-
-
-    </div>
 </div>
-
-
-  </body>
-</html>

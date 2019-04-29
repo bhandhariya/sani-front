@@ -44,7 +44,7 @@ export class FirstFormComponent implements OnInit {
     };
   submmited: boolean = false;
 
-  constructor(private route:Router,private fb: FormBuilder) {
+  constructor(private router:Router,private fb: FormBuilder) {
     this.datePickerConfig = Object.assign({},
       {
         containerClass: 'theme-dark-blue',
@@ -73,6 +73,7 @@ export class FirstFormComponent implements OnInit {
       this.logValidationMessages();
       if(this.firstForm.valid){
         console.log(formData);
+        this.router.navigate(['second']);
       }
     }
     // download(){
