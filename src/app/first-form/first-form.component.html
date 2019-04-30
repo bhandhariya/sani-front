@@ -1,10 +1,15 @@
 <div class="container register">
   <div class="row">
+<<<<<<< HEAD
       <div class="col-md-3 register-left">
           <img src="" alt=""/>
+=======
+      <!-- <div class="col-md-3 register-left">
+          <img src="../../assets/logo_white.png" alt=""/>
+>>>>>>> a1f64ed2b25fc607b5d2db02b021fc4db1a4bd38
           <h3>Welcome</h3> 
-      </div>
-      <div class="col-md-9 register-right">
+      </div> -->
+      <div class="col-md-12 register-right">
         <form [formGroup]="firstForm" (ngSubmit)="onSubmit(firstForm.value)">
           <h3 class="register-heading">First Application Form</h3>
           <div class="row register-form">
@@ -20,22 +25,30 @@
                       <div *ngIf="formErrors.LastName" class="invalid-feedback">{{formErrors.LastName}}</div>
                   </div>
                   <div class="form-group">
+<<<<<<< HEAD
                       <input type="file" class="form-control" (change)="uploadImage($event)"  placeholder="Upload File *" value="" />
+=======
+                      <input type="file" ngf formControlName="File" class="form-control" placeholder="Upload File *" [class.is-invalid]="formErrors.File" />
+                      <div *ngIf="formErrors.File" class="invalid-feedback">{{formErrors.File}}</div>
+>>>>>>> a1f64ed2b25fc607b5d2db02b021fc4db1a4bd38
                   </div>
               </div>
               <div class="col-md-6">
                   <div class="form-group">
-                      <input type="text" formControlName="MiddleName" class="form-control" (blur)="logValidationMessages(firstForm)"
+                      <input type="text" formControlName="MiddleName" class="form-control" (blur)="logValidationMessages(firstForm)" 
                         [class.is-invalid]="formErrors.MiddleName" placeholder="Middle Name *">
                       <div *ngIf="formErrors.MiddleName" class="invalid-feedback">{{formErrors.MiddleName}}</div>
                   </div>
                   <div class="form-group">
-                      <input type="date" class="form-control" placeholder="Addmission Date *" value="" />
-                  </div>
-                  <input type="submit" class="btnRegister" value="Next" [disabled]="firstForm.invalid"/>
+                    <input type="text" formControlName="AddmissionDate" bsDatepicker [bsConfig]="datePickerConfig" (blur)="logValidationMessages()"
+                      class="form-control" maxlength="8" placeholder="Enter Addmission Date" [class.is-invalid]="formErrors.AddmissionDate" >
+                      <div *ngIf="formErrors.AddmissionDate" class="invalid-feedback">{{formErrors.AddmissionDate}}</div>
+                  </div> 
+                  <input type="submit" class="btnRegister" value="Next" />
               </div>
           </div>
         </form>
+        <!-- <pre>{{firstForm.value |json}}</pre> -->
       </div>
   </div>
 

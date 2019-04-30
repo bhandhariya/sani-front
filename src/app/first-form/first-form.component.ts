@@ -2,10 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from "firebase";
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+<<<<<<< HEAD
 import { AngularFireStorage } from "angularfire2/storage";
 import {  ngf } from "angular-file"
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+=======
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+>>>>>>> a1f64ed2b25fc607b5d2db02b021fc4db1a4bd38
 
 @Component({
   selector: 'app-first-form',
@@ -13,8 +17,8 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./first-form.component.css']
 })
 export class FirstFormComponent implements OnInit {
+  datePickerConfig: Partial<BsDatepickerConfig>;
   firstForm: any;
-  //  obj={}
   public loading = false;
   downloadURL: Observable<string>;
   
@@ -37,12 +41,6 @@ export class FirstFormComponent implements OnInit {
   })
   }
   validationMessages  = {
-          'Employer' : {
-                          'required': 'Employer is Required'
-                        },
-          'EmployeeType' : {
-                            'required': 'Employee Type is Required'
-                          },
           'FirstName' : {
                           'required': 'First Name is Required',
                           'minlength': '5 Characters is Required'
@@ -55,128 +53,66 @@ export class FirstFormComponent implements OnInit {
                             'required': 'Last Name is Required',
                             'minlength': '3 Characters is Required'
                           },
-          'DateOfBirth' : {
-                            'required': 'Date Of Birth is Required'
+          'AddmissionDate' : {
+                            'required': 'Addmission Date is Required'
                           },
-          'SSN' : {
-                    'required': 'SSN Number is Required',
-                    'minlength': '4 Digits are Required',
-                  },
-          'PhoneNumber' :  {
-                            'required': 'Phone is Required',
-                            'minlength': 'Minimum 10 Digits are Required',
-                            'maxlength': 'Maximum 10 Digits are Required'
-                          },
-          'EmailID' : {
-                        'required': 'Email is required',
-                        'pattern' : 'Please Enter Valid Email'
-                      },
-          'Address' : {
-                        'minlength': '5 Characters are Required'
-                      },
-          'ResidentialState' : {
-                                  'required': 'Residential State is Required'
-                                },
-          'ZipCode' : {
-                        'minlength': 'Minimum 6 Digits are Required',
-                        'maxlength': 'Maximum 6 Digits are Required'
-                      },
-          'WorkState': {
-                          'required': 'Work State is Required'
-                        },
-          'TimesheetType': {
-                      'required': 'Email is Required.'
-                  },
-          'LineItemType': {
-                            'required': 'LineItem Type is Required.'
-                          },
-          'Class': {
-                            'required': 'Class field is Required.'
-                          },
-          'Vendor': {
-                            'required': 'Vendor is Required.'
-                          },
-          'ProjectStartDate': {
-                                'required': 'Project Start Date is Required'
-                          },
-          'ProjectEndDate' : {
-                                'required': 'Project End Date is Required'
-                              },
-          'LastInvoiceDate' : {
-                                'required': 'Last Invoice Date is Required'
-                              },
-          'EmployeeRole' : {
-                                'required': 'Employee Role is Required'
-                              },
-          'ClientName' : {
-                            'required': 'Client Name is Required'
-                          },
-          'ClientAddress' : {
-                                'required': 'Client Address is Required'
-                              }
+          'File' : {
+                    'required': 'File is Required'
+                  }
   };
   
   formErrors = {
-                'Employer' : '',
-                'EmployeeType' : '',
                 'FirstName' : '',
                 'MiddleName' : '',
                 'LastName' : '',
-                'DateOfBirth' : '',
-                'SSN' : '',
-                'PhoneNumber' : '',
-                'EmailID' : '',
-                'Address' : '',
-                'ResidentialState' : '',
-                'ZipCode' : '',
-                'WorkState': '',
-                'TimesheetType': '',
-                'LineItemType': '',
-                'Class': '',
-                'Vendor': '',
-                'ProjectStartDate': '',
-                'ProjectEndDate' : '',
-                'LastInvoiceDate' : '',
-                'EmployeeRole' : '',
-                'ClientName' : '',
-                'ClientAddress' : '',
+                'AddmissionDate' : '',
+                'File' : ''
     };
+<<<<<<< HEAD
     submmited: boolean = false ;
     
+=======
+  submmited: boolean = false;
+
+  constructor(private router:Router,private fb: FormBuilder) {
+    this.datePickerConfig = Object.assign({},
+      {
+        containerClass: 'theme-dark-blue',
+        showWeekNumbers: false,
+        dateInputFormat: 'MM/DD/YYYY'
+      });
+    }
+>>>>>>> a1f64ed2b25fc607b5d2db02b021fc4db1a4bd38
   
     ngOnInit() {
       this.firstForm = this.fb.group({
         FirstName : ['',[Validators.required]],
         MiddleName : ['',[Validators.required]],
         LastName : ['',[Validators.required]],
-        // AddimissionDate : ['',[Validators.required]],
+        AddmissionDate : ['',[Validators.required]],
+        File : ['',[Validators.required]]
+      });
+
+      this.firstForm.valueChanges.subscribe(value =>{
+        this.logValidationMessages();
       });
     }
   
   
-    onSubmit(){
-      alert()
+    onSubmit(formData){
+      this.submmited = true;
+      this.logValidationMessages();
+      if(this.firstForm.valid){
+        console.log(formData);
+        this.router.navigate(['second']);
+      }
     }
-    // download(){
-    //   var storage=firebase.storage().ref();
-    //   var pdf=storage.child('ghf.pdf');
-    //   var data=pdf.getDownloadURL();
-    //   data.then(e=>{
-    //     console.log(e)
-    //   })
-    // }
-    // upload(){
-    
-    // }
-    // next(){
-    //   this.route.navigate(['second']);
-    // }
   
-    logValidationMessages(group: FormGroup ): void {
+    logValidationMessages(group: FormGroup = this.firstForm): void {
       Object.keys(group.controls).forEach((key: string) => {
         const abstractControl = group.get(key);
           this.formErrors[key] = '';
-            if (abstractControl && abstractControl.invalid && (abstractControl.touched)) {
+            if (abstractControl && !abstractControl.valid && (abstractControl.touched || this.submmited)) {
               const messages = this.validationMessages[key];
               for (const errorKey in abstractControl.errors) {
                 if (errorKey) {
