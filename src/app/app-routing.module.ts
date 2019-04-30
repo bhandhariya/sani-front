@@ -7,6 +7,7 @@ import { FirstFormComponent } from './first-form/first-form.component';
 import { FifthPageComponent } from './fifth-page/fifth-page.component';
 import { SixthPageComponent } from './sixth-page/sixth-page.component';
 import { SaventhPageComponent } from './saventh-page/saventh-page.component';
+import { FormFiveFirstComponent } from './form-five-first/form-five-first.component';
 
 const routes: Routes = [
   {path:"",component:FirstFormComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:"fifth",component:FifthPageComponent},
   {path:"sixth",component:SixthPageComponent},
   {path:"seventh",component:SaventhPageComponent},
+  {path:"form1",component:FormFiveFirstComponent},
   
 ];
 

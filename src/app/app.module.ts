@@ -22,6 +22,7 @@ import { SaventhPageComponent } from './saventh-page/saventh-page.component';
     // Directives
 import { OnlyNumberWithLengthDirective } from './shared/directives/onlynumberswithlength';
 import { environment } from 'src/environments/environment';
+import { FormFiveFirstComponent } from './form-five-first/form-five-first.component';
     
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { environment } from 'src/environments/environment';
     FifthPageComponent,
     SixthPageComponent,
     SaventhPageComponent,
-    OnlyNumberWithLengthDirective
+    OnlyNumberWithLengthDirective,
+    FormFiveFirstComponent
   ],
   imports: [
     BrowserModule,
