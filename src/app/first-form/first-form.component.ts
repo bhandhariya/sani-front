@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from "firebase";
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-<<<<<<< HEAD
 import { AngularFireStorage } from "angularfire2/storage";
 import {  ngf } from "angular-file"
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-=======
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
->>>>>>> a1f64ed2b25fc607b5d2db02b021fc4db1a4bd38
 
 @Component({
   selector: 'app-first-form',
@@ -22,7 +19,14 @@ export class FirstFormComponent implements OnInit {
   public loading = false;
   downloadURL: Observable<string>;
   
-  constructor(private route:Router,private fb: FormBuilder,private storage:AngularFireStorage) { }
+  constructor(private router:Router,private fb: FormBuilder,private storage:AngularFireStorage) {
+    this.datePickerConfig = Object.assign({},
+      {
+        containerClass: 'theme-dark-blue',
+        showWeekNumbers: false,
+        dateInputFormat: 'MM/DD/YYYY'
+      });
+   }
   uploadImage(event){
     const file = event.target.files[0];
     var randomString=Math.floor(Date.now() / 1000);
@@ -68,21 +72,11 @@ export class FirstFormComponent implements OnInit {
                 'AddmissionDate' : '',
                 'File' : ''
     };
-<<<<<<< HEAD
     submmited: boolean = false ;
     
-=======
-  submmited: boolean = false;
+  
 
-  constructor(private router:Router,private fb: FormBuilder) {
-    this.datePickerConfig = Object.assign({},
-      {
-        containerClass: 'theme-dark-blue',
-        showWeekNumbers: false,
-        dateInputFormat: 'MM/DD/YYYY'
-      });
-    }
->>>>>>> a1f64ed2b25fc607b5d2db02b021fc4db1a4bd38
+ 
   
     ngOnInit() {
       this.firstForm = this.fb.group({
