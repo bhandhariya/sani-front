@@ -20,7 +20,7 @@
                       <div *ngIf="formErrors.LastName" class="invalid-feedback">{{formErrors.LastName}}</div>
                   </div>
                   <div class="form-group">
-                      <input type="file" class="form-control" (change)="uploadImage($event)"  placeholder="Upload File *" value="" />
+                      <input type="file" class="form-control"    (change)="uploadImage($event)"  placeholder="Upload File *" value="" />
                   </div>
               </div>
               <div class="col-md-6">
@@ -30,7 +30,7 @@
                       <div *ngIf="formErrors.MiddleName" class="invalid-feedback">{{formErrors.MiddleName}}</div>
                   </div>
                   <div class="form-group">
-                      <input type="date" class="form-control" placeholder="Addmission Date *" value="" />
+                      <input type="date" class="form-control" formControlName="AddimissionDate"  placeholder="Addmission Date *" value="" />
                   </div>
                   <input type="submit" class="btnRegister" value="Next" [disabled]="firstForm.invalid"/>
               </div>

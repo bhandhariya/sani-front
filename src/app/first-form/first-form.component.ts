@@ -17,6 +17,7 @@ export class FirstFormComponent implements OnInit {
   //  obj={}
   public loading = false;
   downloadURL: Observable<string>;
+  url;
   
   constructor(private route:Router,private fb: FormBuilder,private storage:AngularFireStorage) { }
   uploadImage(event){
@@ -28,7 +29,7 @@ export class FirstFormComponent implements OnInit {
     task.snapshotChanges().pipe(
       finalize(() =>{ this.downloadURL = fileRef.getDownloadURL()
       this.downloadURL.subscribe(e=>{
-        console.log(e)
+        this.firstForm.get('imageURL').setValue(e);
       })
       } )
    )
@@ -149,13 +150,16 @@ export class FirstFormComponent implements OnInit {
         FirstName : ['',[Validators.required]],
         MiddleName : ['',[Validators.required]],
         LastName : ['',[Validators.required]],
+        imageURL:[''],
+        AddimissionDate:[Date]
+
         // AddimissionDate : ['',[Validators.required]],
       });
     }
   
   
     onSubmit(){
-      alert()
+      console.log(this.firstForm.value)
     }
     // download(){
     //   var storage=firebase.storage().ref();
